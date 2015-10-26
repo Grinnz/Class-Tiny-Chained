@@ -22,14 +22,15 @@ sub import {
 
 sub chain_attributes {
   my ($class, $pkg) = @_;
-  my @attrs = grep { !$CHAINED{$pkg}{$_} } $class->get_all_attributes_for($pkg);
-  $CHAINED{$pkg}{$_} = 1 for @attrs;
-  install_modifier $pkg, around => \@attrs, sub {
-    my ($orig, $self) = (shift, shift);
-    return $self->$orig() unless @_;
-    $self->$orig(@_);
-    return $self;
-  };
+  foreach my $attr (grep { !$CHAINED{$pkg}{$_} } $class->get_all_attributes_for($pkg)) {
+    $CHAINED{$pkg}{$attr} = 1;
+    install_modifier $pkg, around => $attr, sub {
+      my $orig = shift;
+      return $orig->(@_) unless @_ > 1;
+      $_[0]->{$attr} = $_[1];
+      return $_[0];
+    };
+  }
 }
 
 1;
