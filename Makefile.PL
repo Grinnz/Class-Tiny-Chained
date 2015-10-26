@@ -22,6 +22,7 @@ my %WriteMakefileArgs = (
     "parent" => 0
   },
   "TEST_REQUIRES" => {
+    "Test::Identity" => 0,
     "Test::More" => "0.88"
   },
   "VERSION" => "0.001",
@@ -34,6 +35,7 @@ my %WriteMakefileArgs = (
 my %FallbackPrereqs = (
   "Class::Method::Modifiers" => "1.05",
   "Class::Tiny" => "1.000",
+  "Test::Identity" => 0,
   "Test::More" => "0.88",
   "parent" => 0
 );

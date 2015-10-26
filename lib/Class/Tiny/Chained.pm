@@ -8,6 +8,8 @@ use Class::Method::Modifiers 'install_modifier';
 
 our $VERSION = '0.001';
 
+my %CHAINED;
+
 sub import {
   my $class = shift;
   my $pkg   = caller;
@@ -20,7 +22,8 @@ sub import {
 
 sub chain_attributes {
   my ($class, $pkg) = @_;
-  my @attrs = $class->get_all_attributes_for($pkg);
+  my @attrs = grep { !$CHAINED{$pkg}{$_} } $class->get_all_attributes_for($pkg);
+  $CHAINED{$pkg}{$_} = 1 for @attrs;
   install_modifier $pkg, around => \@attrs, sub {
     my ($orig, $self) = (shift, shift);
     return $self->$orig() unless @_;
@@ -75,7 +78,7 @@ value, the object is returned so that further methods can be called.
 =head1 INTERNALS
 
 In addition to the methods discussed in L<Class::Tiny/"Introspection and internals">,
-L<Class::Tiny::Chained> implements the following class method.
+L<Class::Tiny::Chained> implements the following internal method.
 
 =head2 chain_attributes
 
