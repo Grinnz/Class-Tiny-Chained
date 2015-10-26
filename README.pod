@@ -43,7 +43,7 @@ value, the object is returned so that further methods can be called.
 
 =head1 INTERNALS
 
-In addition to the methods discussed in L<Class::Tiny/"Introspection and internals">,
+In addition to inheriting the methods discussed in L<Class::Tiny/"Introspection and internals">,
 L<Class::Tiny::Chained> implements the following internal method.
 
 =head2 chain_attributes
