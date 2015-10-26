@@ -25,10 +25,9 @@ sub chain_attributes {
   foreach my $attr (grep { !$CHAINED{$pkg}{$_} } $class->get_all_attributes_for($pkg)) {
     $CHAINED{$pkg}{$attr} = 1;
     install_modifier $pkg, around => $attr, sub {
-      my $orig = shift;
-      return $orig->(@_) unless @_ > 1;
-      $_[0]->{$attr} = $_[1];
-      return $_[0];
+      return $_[0]->($_[1]) unless @_ > 2; # Getter
+      $_[1]->{$attr} = $_[2]; # Setter
+      return $_[1];
     };
   }
 }
