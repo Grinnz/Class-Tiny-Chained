@@ -1,35 +1,4 @@
-package Class::Tiny::Chained;
-
-use strict;
-use warnings;
-use parent 'Class::Tiny';
-
-use Class::Method::Modifiers 'install_modifier';
-
-our $VERSION = '0.001';
-
-sub import {
-  my $class = shift;
-  my $pkg   = caller;
-  $class->prepare_class($pkg);
-  if (@_) {
-    $class->create_attributes($pkg, @_);
-    $class->chain_attributes($pkg);
-  }
-}
-
-sub chain_attributes {
-  my ($class, $pkg) = @_;
-  my @attrs = $class->get_all_attributes_for($pkg);
-  install_modifier $pkg, around => \@attrs, sub {
-    my ($orig, $self) = (shift, shift);
-    return $self->$orig() unless @_;
-    $self->$orig(@_);
-    return $self;
-  };
-}
-
-1;
+=pod
 
 =head1 NAME
 
@@ -104,3 +73,5 @@ This is free software, licensed under:
 =head1 SEE ALSO
 
 L<Object::Tap>, L<MooX::ChainedAttributes>
+
+=cut
