@@ -17,7 +17,6 @@ my %WriteMakefileArgs = (
   "MIN_PERL_VERSION" => "5.006",
   "NAME" => "Class::Tiny::Chained",
   "PREREQ_PM" => {
-    "Class::Method::Modifiers" => "1.05",
     "Class::Tiny" => "1.003",
     "parent" => 0
   },
@@ -33,7 +32,6 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "Class::Method::Modifiers" => "1.05",
   "Class::Tiny" => "1.003",
   "Test::Identity" => 0,
   "Test::More" => "0.88",

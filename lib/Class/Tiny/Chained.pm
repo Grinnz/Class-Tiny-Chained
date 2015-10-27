@@ -4,8 +4,6 @@ use strict;
 use warnings;
 use parent 'Class::Tiny';
 
-use Class::Method::Modifiers 'install_modifier';
-
 our $VERSION = '0.001';
 
 sub __gen_sub_body {
