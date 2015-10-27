@@ -18,7 +18,7 @@ my %WriteMakefileArgs = (
   "NAME" => "Class::Tiny::Chained",
   "PREREQ_PM" => {
     "Class::Method::Modifiers" => "1.05",
-    "Class::Tiny" => "1.000",
+    "Class::Tiny" => "1.003",
     "parent" => 0
   },
   "TEST_REQUIRES" => {
@@ -34,7 +34,7 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Class::Method::Modifiers" => "1.05",
-  "Class::Tiny" => "1.000",
+  "Class::Tiny" => "1.003",
   "Test::Identity" => 0,
   "Test::More" => "0.88",
   "parent" => 0

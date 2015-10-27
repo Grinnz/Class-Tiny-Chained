@@ -39,7 +39,7 @@
       "runtime" : {
          "requires" : {
             "Class::Method::Modifiers" : "1.05",
-            "Class::Tiny" : "1.000",
+            "Class::Tiny" : "1.003",
             "parent" : "0",
             "perl" : "5.006"
          }

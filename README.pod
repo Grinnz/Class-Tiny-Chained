@@ -41,19 +41,6 @@ L<Class::Tiny::Chained> is a wrapper around L<Class::Tiny> which makes the
 generated attribute accessors chainable; that is, when setting an attribute
 value, the object is returned so that further methods can be called.
 
-=head1 INTERNALS
-
-In addition to inheriting the methods discussed in L<Class::Tiny/"Introspection and internals">,
-L<Class::Tiny::Chained> implements the following internal method.
-
-=head2 chain_attributes
-
- Class::Tiny::Chained->chain_attributes("Employee");
-
-Modifies the attribute setters of all attributes of the given L<Class::Tiny>
-class to be chainable (return the object). Called automatically on any classes
-created via L<Class::Tiny::Chained>.
-
 =head1 BUGS
 
 Report any issues on the public bugtracker.
