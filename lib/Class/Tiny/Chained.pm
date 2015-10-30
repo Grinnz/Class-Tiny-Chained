@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use parent 'Class::Tiny';
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 sub __gen_sub_body {
   my ($self, $name, $has_default, $default_type) = @_;
