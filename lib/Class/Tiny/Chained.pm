@@ -2,7 +2,8 @@ package Class::Tiny::Chained;
 
 use strict;
 use warnings;
-use parent 'Class::Tiny';
+use Class::Tiny ();
+our @ISA = 'Class::Tiny';
 
 our $VERSION = '0.002';
 

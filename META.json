@@ -4,7 +4,7 @@
       "Dan Book <dbook@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 5.040, CPAN::Meta::Converter version 2.150005",
+   "generated_by" : "Dist::Zilla version 5.042, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "artistic_2"
    ],
@@ -39,13 +39,12 @@
       "runtime" : {
          "requires" : {
             "Class::Tiny" : "1.003",
-            "parent" : "0",
             "perl" : "5.006"
          }
       },
       "test" : {
          "requires" : {
-            "Test::Identity" : "0",
+            "Scalar::Util" : "0",
             "Test::More" : "0.88"
          }
       }
@@ -53,7 +52,7 @@
    "provides" : {
       "Class::Tiny::Chained" : {
          "file" : "lib/Class/Tiny/Chained.pm",
-         "version" : "0.001"
+         "version" : "0.002"
       }
    },
    "release_status" : "stable",
@@ -68,7 +67,7 @@
          "web" : "https://github.com/Grinnz/Class-Tiny-Chained"
       }
    },
-   "version" : "0.001",
+   "version" : "0.002",
    "x_contributors" : [
       "Dan Book <grinnz@grinnz.com>"
    ]
