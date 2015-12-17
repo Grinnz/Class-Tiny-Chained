@@ -5,7 +5,7 @@ use warnings;
 use Class::Tiny ();
 our @ISA = 'Class::Tiny';
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 sub __gen_sub_body {
   my ($self, $name, $has_default, $default_type) = @_;
