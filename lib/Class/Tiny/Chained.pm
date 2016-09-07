@@ -10,18 +10,35 @@ our $VERSION = '0.003';
 sub __gen_sub_body {
   my ($self, $name, $has_default, $default_type) = @_;
   
-  my $sub = "sub $name { if (\@_ == 1) {";
-  
   if ($has_default && $default_type eq 'CODE') {
-    $sub .= "if ( !exists \$_[0]{$name} ) { \$_[0]{$name} = \$default->(\$_[0]) }";
+    return << "HERE";
+sub $name {
+  return (
+      ( \@_ == 1 )
+    ? ( exists \$_[0]{$name} ? \$_[0]{$name} : ( \$_[0]{$name} = \$default->( \$_[0] ) ) )
+    : do { \$_[0]{$name} = \$_[1]; \$_[0] }
+  );
+}
+HERE
   }
   elsif ($has_default) {
-    $sub .= "if ( !exists \$_[0]{$name} ) { \$_[0]{$name} = \$default }";
+    return << "HERE";
+sub $name {
+  return (
+      ( \@_ == 1 )
+    ? ( exists \$_[0]{$name} ? \$_[0]{$name} : ( \$_[0]{$name} = \$default ) )
+    : do { \$_[0]{$name} = \$_[1]; \$_[0] }
+  );
+}
+HERE
   }
-  
-  $sub .= "return \$_[0]{$name} } else { \$_[0]{$name}=\$_[1]; return \$_[0] } }";
-  
-  return $sub;
+  else {
+    return << "HERE";
+sub $name {
+  return \@_ == 1 ? \$_[0]{$name} : do { \$_[0]{$name} = \$_[1]; \$_[0] };
+}
+HERE
+  }
 }
 
 1;
