@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+0.003     2016-09-10 15:55:29 EDT
   - Optimize generated accessors similarly to Class::Tiny 1.006
 
 0.002     2015-12-17 18:26:18 EST
