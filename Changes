@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+0.004     2016-09-16 03:01:25 EDT
   - Further optimize generated accessors for chaining case (thanks haarg)
 
 0.003     2016-09-10 15:55:29 EDT
