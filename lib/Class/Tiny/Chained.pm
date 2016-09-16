@@ -16,7 +16,7 @@ sub $name {
   return (
       ( \@_ == 1 )
     ? ( exists \$_[0]{$name} ? \$_[0]{$name} : ( \$_[0]{$name} = \$default->( \$_[0] ) ) )
-    : do { \$_[0]{$name} = \$_[1]; \$_[0] }
+    : scalar( \$_[0]{$name} = \$_[1], \$_[0] )
   );
 }
 HERE
@@ -27,7 +27,7 @@ sub $name {
   return (
       ( \@_ == 1 )
     ? ( exists \$_[0]{$name} ? \$_[0]{$name} : ( \$_[0]{$name} = \$default ) )
-    : do { \$_[0]{$name} = \$_[1]; \$_[0] }
+    : scalar( \$_[0]{$name} = \$_[1], \$_[0] )
   );
 }
 HERE
@@ -35,7 +35,7 @@ HERE
   else {
     return << "HERE";
 sub $name {
-  return \@_ == 1 ? \$_[0]{$name} : do { \$_[0]{$name} = \$_[1]; \$_[0] };
+  return \@_ == 1 ? \$_[0]{$name} : scalar( \$_[0]{$name} = \$_[1], \$_[0] )
 }
 HERE
   }
